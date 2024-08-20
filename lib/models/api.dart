@@ -1,4 +1,11 @@
 class API {
+  String api_key;
+  String api_name;
+  String spreadsheet_id;
+  String api_description;
+  String user_id;
+  String status;
+  DateTime create_at;
   String name;
   String api_url;
   int usetime;

@@ -15,7 +15,7 @@ class ApiDao {
   //找出api.json檔案
   Future<File> _getLocalFile() async {
     final path = await _getLocalPath();
-    return File('$path/api-0809.json');
+    return File('$path/api-0813.json');
   }
 
   //讀取api.json檔案
@@ -23,6 +23,16 @@ class ApiDao {
     try {
       final file = await _getLocalFile();
       final contents = await file.readAsString();
+      List<dynamic> jsonData = jsonDecode(contents);
+      print(jsonData.map((json) => API.fromJson(json)).toList());
+      return jsonData.map((json) => API.fromJson(json)).toList();
+    } catch (e) {
+      return [];
+    }
+  }
+
+  Future<List<API>> readAPIs2(String contents) async {
+    try {
       List<dynamic> jsonData = jsonDecode(contents);
       print(jsonData.map((json) => API.fromJson(json)).toList());
       return jsonData.map((json) => API.fromJson(json)).toList();
